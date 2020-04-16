@@ -58,7 +58,6 @@ async function handleRequest(request) {
   let rand_url = URLs[Math.round(Math.random())];
   let res = await fetch(rand_url);
   res = new Response(res.body, res);
-  res.headers.set("Set-Cookie", `cloudflare_rand_url=${rand_url}`);
   return new HTMLRewriter()
     .on("h1#title", new H1TitleHandler())
     .on("a#url", new AHandler())
